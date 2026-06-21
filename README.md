@@ -16,7 +16,7 @@ Smart Budget is a simple budget app for zimaos and casaos running on docker
 5. Open http://[your-zimaos-ip]:8090
 6. enjoy
 
-         # Shadow out
+   # Shadow out
 
 ## Screenshots
 
