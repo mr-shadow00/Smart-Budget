@@ -22,8 +22,8 @@ It tracks your spending and will sync your budget to all of your devices automat
 ## Screenshots
 
 <p align="center">
-  <img src="Screenshots/Pc%20Light%202.0.png" width="500">
-  <img src="Screenshots/Pc%20Dark%202.0.png" width="500">
+  <img src="Screenshots/Pc%20Light%202.0.png" width="400">
+  <img src="Screenshots/Pc%20Dark%202.0.png" width="400">
 </p>
 
 <p align="center">
