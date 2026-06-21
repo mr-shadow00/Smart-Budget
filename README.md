@@ -1,7 +1,9 @@
-About
+## ABOUT 
 
 Smart Budget is a simple budget app for zimaos and casaos running on docker
 
+
+## How to install
 
 1. make folders and move the files there (u can change the app name if u want)
 
