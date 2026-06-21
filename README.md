@@ -1,4 +1,4 @@
-## ABOUT 
+## About
 
 Smart Budget is a simple budget app for zimaos and casaos running on docker
 
