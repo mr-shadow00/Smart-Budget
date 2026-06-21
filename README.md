@@ -2,7 +2,7 @@
 
 Smart Budget is a simple budget app for zimaos and casaos running on docker
 
-It tracks your spending
+It tracks your spending and will sync your budget to all of your devices automatically 
 
 ## How to install
 
