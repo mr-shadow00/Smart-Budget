@@ -1,3 +1,7 @@
+About
+Smart Budget is a simple budget app for zimaos and casaos running on docker
+
+
 1. make folders and move the files there (u can change the app name if u want)
 
    /DATA/AppData/smart-budget/app/    ← server/, public/, package.json, package-lock.json go here
