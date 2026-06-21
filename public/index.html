@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Smart Budget</title>
+<meta name="theme-color" content="#14181c" />
+<link rel="manifest" href="/manifest.json" />
+<link rel="icon" href="/icons/icon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="/icons/icon-192.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+
+<!-- ===================== AUTH SCREENS ===================== -->
+<div id="screen-loading" class="screen screen-center active">
+  <div class="brand-mark">¢</div>
+</div>
+
+<div id="screen-setup" class="screen screen-center">
+  <div class="auth-card">
+    <div class="brand-mark">¢</div>
+    <h1 class="auth-title">Set up your PIN</h1>
+    <p id="setup-step-label" class="auth-sub">Choose a 4-8 digit PIN to lock this budget.</p>
+    <div class="pin-dots" id="setup-dots"></div>
+    <div id="setup-error" class="auth-error"></div>
+    <div class="keypad" id="setup-keypad"></div>
+  </div>
+</div>
+
+<div id="screen-login" class="screen screen-center">
+  <div class="auth-card">
+    <div class="brand-mark">¢</div>
+    <h1 class="auth-title" id="login-title">Welcome back</h1>
+    <p class="auth-sub">Enter your PIN to unlock</p>
+    <input type="password" id="login-pin-input" class="pin-text-input" inputmode="numeric" autocomplete="off" maxlength="8" placeholder="••••" autofocus />
+    <div id="login-error" class="auth-error"></div>
+    <button class="btn btn-primary full-width" id="login-submit-btn">Unlock</button>
+  </div>
+</div>
+
+<!-- ===================== MAIN APP ===================== -->
+<div id="screen-app" class="screen">
+  <div class="app-shell">
+
+    <!-- Sidebar / top bar -->
+    <header class="topbar">
+      <div class="topbar-brand">
+        <span class="brand-mark small">¢</span>
+        <span id="app-display-name" class="brand-name">My Budget</span>
+      </div>
+      <nav class="tabbar" id="tabbar">
+        <button class="tab-btn active" data-tab="home">Home</button>
+        <button class="tab-btn" data-tab="categories">Categories</button>
+        <button class="tab-btn" data-tab="settings">Settings</button>
+      </nav>
+      <button id="theme-toggle" class="icon-btn" title="Toggle theme" aria-label="Toggle theme">
+        <svg id="theme-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 3v2M12 19v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M3 12h2M19 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="12" r="4.5" stroke="currentColor" stroke-width="1.8"/></svg>
+      </button>
+    </header>
+
+    <main class="content">
+
+      <!-- ---- HOME TAB ---- -->
+      <section class="tab-pane active" id="pane-home">
+
+        <div class="budget-col">
+          <div class="hero-wrap">
+            <div class="ledger-card hero-card" id="hero-card">
+              <div class="hero-top">
+                <button class="month-nav" id="month-prev" aria-label="Previous month">‹</button>
+                <button class="month-label" id="month-label">June 2026</button>
+                <button class="month-nav" id="month-next" aria-label="Next month">›</button>
+              </div>
+              <div class="eyebrow">Balance this period</div>
+              <div class="hero-balance" id="hero-balance">$0.00</div>
+              <div class="hero-stats">
+                <div class="hero-stat in">
+                  <span class="hero-stat-label">Income</span>
+                  <span class="hero-stat-value" id="hero-income">$0.00</span>
+                </div>
+                <div class="hero-stat out">
+                  <span class="hero-stat-label">Expenses</span>
+                  <span class="hero-stat-value" id="hero-expense">$0.00</span>
+                </div>
+              </div>
+              <div class="hero-foot">
+                <span>All-time balance</span>
+                <span id="hero-alltime">$0.00</span>
+              </div>
+              <div class="perforation" aria-hidden="true"></div>
+            </div>
+          </div>
+
+          <div class="breakdown" id="breakdown-wrap">
+            <div class="section-title">Top spending — this period</div>
+            <div id="breakdown-list" class="breakdown-list"></div>
+            <div id="breakdown-empty" class="muted-note">Nothing spent this period yet.</div>
+          </div>
+
+          <div class="filters">
+            <div class="seg" id="type-filter">
+              <button class="seg-btn active" data-type="">All</button>
+              <button class="seg-btn" data-type="income">Income</button>
+              <button class="seg-btn" data-type="expense">Expense</button>
+            </div>
+            <input type="search" id="search-input" class="search-input" placeholder="Search…" />
+          </div>
+        </div>
+
+        <div class="ledger-col">
+          <div class="section-title">Ledger</div>
+          <div id="tx-list" class="tx-list"></div>
+          <div id="tx-empty" class="empty-state">
+            <div class="empty-emoji">🧾</div>
+            <p>No entries yet for this period.<br>Tap the + button to log one.</p>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ---- CATEGORIES TAB ---- -->
+      <section class="tab-pane" id="pane-categories">
+        <div class="section-title">Categories</div>
+        <p class="muted-note">Used to tag entries and group your spending breakdown.</p>
+        <div id="category-list" class="category-list"></div>
+        <button class="btn btn-secondary full-width" id="add-category-btn">+ New category</button>
+      </section>
+
+      <!-- ---- SETTINGS TAB ---- -->
+      <section class="tab-pane" id="pane-settings">
+        <div class="section-title">Settings</div>
+
+        <div class="settings-group">
+          <label class="field-label" for="setting-display-name">Budget name</label>
+          <input type="text" id="setting-display-name" class="text-input" maxlength="40" />
+        </div>
+
+        <div class="settings-group">
+          <label class="field-label" for="setting-currency">Currency</label>
+          <select id="setting-currency" class="text-input"></select>
+        </div>
+
+        <button class="btn btn-primary full-width" id="save-settings-btn">Save settings</button>
+
+        <div class="divider"></div>
+
+        <div class="settings-group">
+          <div class="field-label">Security</div>
+          <button class="btn btn-secondary full-width" id="change-pin-btn">Change PIN</button>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="settings-group">
+          <div class="field-label">Backup</div>
+          <p class="muted-note">Download a copy of every entry and category, or restore from a previous backup.</p>
+          <button class="btn btn-secondary full-width" id="export-btn">Download backup (.json)</button>
+          <button class="btn btn-secondary full-width" id="import-btn">Restore from backup</button>
+          <input type="file" id="import-file" accept="application/json" hidden />
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="settings-group">
+          <div class="field-label">Sync across your devices</div>
+          <p class="muted-note">This app lives on your server, so every device that opens this same address shares the exact same data — there's nothing to sync, because there's only ever one copy. Just open this same URL from your phone, tablet, or laptop.</p>
+        </div>
+
+        <div class="divider"></div>
+
+        <button class="btn btn-danger full-width" id="logout-btn">Log out</button>
+
+        <p class="version-tag">Smart Budget</p>
+      </section>
+
+    </main>
+
+    <button class="fab" id="fab-add" aria-label="Add entry">+</button>
+    <nav class="bottom-nav" id="bottom-nav">
+      <button class="bn-btn active" data-tab="home">
+        <span class="bn-pill">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 11.5 12 4l8 7.5M6 10v9a1 1 0 0 0 1 1h3v-5h4v5h3a1 1 0 0 0 1-1v-9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="bn-label">Home</span>
+        </span>
+      </button>
+      <button class="bn-btn" data-tab="categories">
+        <span class="bn-pill">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+          <span class="bn-label">Categories</span>
+        </span>
+      </button>
+      <button class="bn-btn" data-tab="settings">
+        <span class="bn-pill">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.8"/><path d="M19.4 13a7.97 7.97 0 0 0 0-2l2-1.5-2-3.4-2.3.9a8 8 0 0 0-1.7-1l-.4-2.4h-4l-.4 2.4a8 8 0 0 0-1.7 1l-2.3-.9-2 3.4 2 1.5a8 8 0 0 0 0 2l-2 1.5 2 3.4 2.3-.9a8 8 0 0 0 1.7 1l.4 2.4h4l.4-2.4a8 8 0 0 0 1.7-1l2.3.9 2-3.4-2-1.5Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+          <span class="bn-label">Settings</span>
+        </span>
+      </button>
+    </nav>
+  </div>
+</div>
+
+<!-- ===================== ADD/EDIT TRANSACTION MODAL ===================== -->
+<div class="modal-backdrop" id="tx-modal-backdrop">
+  <div class="modal-sheet" id="tx-modal">
+    <div class="modal-handle"></div>
+    <div class="modal-header">
+      <h2 id="tx-modal-title">New entry</h2>
+      <button class="icon-btn" id="tx-modal-close" aria-label="Close">✕</button>
+    </div>
+
+    <div class="seg" id="tx-type-seg">
+      <button class="seg-btn active" data-type="expense">Expense</button>
+      <button class="seg-btn" data-type="income">Income</button>
+    </div>
+
+    <label class="field-label">Amount</label>
+    <div class="amount-input-wrap">
+      <span id="tx-currency-symbol" class="amount-symbol">$</span>
+      <input type="number" id="tx-amount" class="amount-input" inputmode="decimal" placeholder="0.00" step="0.01" min="0" />
+    </div>
+
+    <label class="field-label">Description</label>
+    <input type="text" id="tx-description" class="text-input" maxlength="200" placeholder="e.g. Groceries at Lulu" />
+
+    <label class="field-label">Category</label>
+    <div id="tx-category-chips" class="chip-row"></div>
+
+    <label class="field-label">Date</label>
+    <input type="date" id="tx-date" class="text-input" />
+
+    <label class="field-label">Note <span class="optional-tag">optional</span></label>
+    <textarea id="tx-note" class="text-input" rows="2" maxlength="1000" placeholder="Anything else worth remembering"></textarea>
+
+    <div id="tx-modal-error" class="auth-error"></div>
+
+    <div class="modal-actions">
+      <button class="btn btn-primary full-width" id="tx-save-btn">Save entry</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== CATEGORY MODAL ===================== -->
+<div class="modal-backdrop" id="cat-modal-backdrop">
+  <div class="modal-sheet" id="cat-modal">
+    <div class="modal-handle"></div>
+    <div class="modal-header">
+      <h2 id="cat-modal-title">New category</h2>
+      <button class="icon-btn" id="cat-modal-close" aria-label="Close">✕</button>
+    </div>
+
+    <div class="seg" id="cat-type-seg">
+      <button class="seg-btn active" data-type="expense">Expense</button>
+      <button class="seg-btn" data-type="income">Income</button>
+    </div>
+
+    <label class="field-label">Name</label>
+    <input type="text" id="cat-name" class="text-input" maxlength="50" placeholder="e.g. Subscriptions" />
+
+    <label class="field-label">Icon (emoji)</label>
+    <input type="text" id="cat-icon" class="text-input" maxlength="8" placeholder="🏷️" />
+
+    <label class="field-label">Color</label>
+    <input type="color" id="cat-color" class="color-input" value="#d98e4a" />
+
+    <div id="cat-modal-error" class="auth-error"></div>
+
+    <div class="modal-actions">
+      <button class="btn btn-danger" id="cat-delete-btn" hidden>Delete</button>
+      <button class="btn btn-primary full-width" id="cat-save-btn">Save category</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== CHANGE PIN MODAL ===================== -->
+<div class="modal-backdrop" id="pin-modal-backdrop">
+  <div class="modal-sheet" id="pin-modal">
+    <div class="modal-handle"></div>
+    <div class="modal-header">
+      <h2>Change PIN</h2>
+      <button class="icon-btn" id="pin-modal-close" aria-label="Close">✕</button>
+    </div>
+    <label class="field-label">Current PIN</label>
+    <input type="password" id="pin-current" class="text-input" inputmode="numeric" maxlength="8" />
+    <label class="field-label">New PIN</label>
+    <input type="password" id="pin-new" class="text-input" inputmode="numeric" maxlength="8" />
+    <label class="field-label">Confirm new PIN</label>
+    <input type="password" id="pin-confirm" class="text-input" inputmode="numeric" maxlength="8" />
+    <div id="pin-modal-error" class="auth-error"></div>
+    <div class="modal-actions">
+      <button class="btn btn-primary full-width" id="pin-save-btn">Update PIN</button>
+    </div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div id="toast" class="toast"></div>
+
+<script src="/js/app.js"></script>
+</body>
+</html>
