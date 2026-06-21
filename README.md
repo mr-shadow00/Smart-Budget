@@ -8,4 +8,5 @@
 4. w8
 5. Open http://[your-zimaos-ip]:8090
 6. enjoy
+
 Shadow out
