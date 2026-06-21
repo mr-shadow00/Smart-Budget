@@ -11,4 +11,14 @@
 
 Shadow out
 
-![Home screen](Screenshots/Pc Dark 2.0.png)
+## Screenshots
+
+<p align="center">
+  <img src="Screenshots/Pc%20Light%202.0.png" width="500">
+  <img src="Screenshots/Pc%20Dark%202.0.png" width="500">
+</p>
+
+<p align="center">
+  <img src="Screenshots/Phone%20Light.PNG" width="240">
+  <img src="Screenshots/Phone%20Dark.PNG" width="240">
+</p>
