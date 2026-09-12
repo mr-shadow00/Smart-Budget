@@ -1,0 +1,16 @@
+services:
+  smart-budget:
+    image: node:20-alpine
+    container_name: smart-budget
+    restart: unless-stopped
+    working_dir: /app
+    command: ["sh", "-c", "[ -d node_modules ] || npm install --omit=dev --no-audit --no-fund; node server/index.js"]
+    ports:
+      - "8090:3000"
+    volumes:
+      - /DATA/AppData/smart-budget/app:/app
+      - /DATA/AppData/smart-budget/data:/app/data
+    environment:
+      - PORT=3000
+      - DATA_DIR=/app/data
+      - TZ=your-time-zone
