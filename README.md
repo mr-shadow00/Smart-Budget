@@ -6,15 +6,13 @@ A smart and intuitive budget management application designed to help you keep tr
 
 ## 📸 Screenshots
 
-*(Add your application screenshots below to give users a quick visual preview of the project)*
-
-| Dashboard Overview | Expense Tracking |
+| Dashboard | Add Transaction |
 | :---: | :---: |
-| ![Dashboard Screenshot](path/to/screenshot1.png) | ![Expense Tracking Screenshot](path/to/screenshot2.png) |
+| ![Dashboard](ss/dashboard.png) | ![Add Transaction](ss/add-transaction.png) |
 
-| Budget Analytics | Settings / Profile |
+| Analytics & Reports | Budget Settings |
 | :---: | :---: |
-| ![Analytics Screenshot](path/to/screenshot3.png) | ![Settings Screenshot](path/to/screenshot4.png) |
+| ![Analytics](ss/analytics.png) | ![Budget Settings](ss/settings.png) |
 
 ---
 
@@ -22,23 +20,20 @@ A smart and intuitive budget management application designed to help you keep tr
 
 - **Expense & Income Tracking:** Easily log your daily earnings and spendings.
 - **Visual Analytics:** View interactive charts and breakdowns of your monthly financial habits.
-- **Budget Goals:** Set custom budget limits for different categories (e.g., food, utilities, entertainment).
+- **Budget Goals:** Set custom budget limits for different categories.
 - **User-Friendly Interface:** Clean, responsive, and easy-to-navigate design.
 
 ---
 
 ## 🛠️ Tech Stack
 
-*(Update this section based on the actual technologies you used, e.g., React, Node.js, Python, Flutter, etc.)*
-- **Frontend:** HTML, CSS, JavaScript / React
-- **Backend:** Node.js, Express
-- **Database:** MongoDB / PostgreSQL
+- **Frontend / UI:** HTML, CSS, JavaScript
+- **Backend:** Node.js / Python
+- **Database:** LocalStorage / MongoDB
 
 ---
 
 ## 📦 Installation & Setup
-
-Follow these steps to run the project locally on your machine:
 
 1. **Clone the repository:**
    ```bash
