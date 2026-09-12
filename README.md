@@ -6,13 +6,21 @@ A smart and intuitive budget management application designed to help you keep tr
 
 ## 📸 Screenshots
 
-| Dashboard | Add Transaction |
+| PC Dark 1.0 | PC Light 1.0 |
 | :---: | :---: |
-| ![Dashboard](ss/dashboard.png) | ![Add Transaction](ss/add-transaction.png) |
+| ![PC Dark 1.0](Screenshots/PC%20Dark%201.0%20.png) | ![PC Light 1.0](Screenshots/PC%20Light%201.0%20.png) |
 
-| Analytics & Reports | Budget Settings |
+| PC Dark 2.0 | PC Light 2.0 |
 | :---: | :---: |
-| ![Analytics](ss/analytics.png) | ![Budget Settings](ss/settings.png) |
+| ![Pc Dark 2.0](Screenshots/Pc%20Dark%202.0.png) | ![Pc Light 2.0](Screenshots/Pc%20Light%202.0.png) |
+
+| Phone Dark | Phone Light |
+| :---: | :---: |
+| ![Phone Dark](Screenshots/Phone%20Dark.PNG) | ![Phone Light](Screenshots/Phone%20Light.PNG) |
+
+| Categories | Login Screen |
+| :---: | :---: |
+| ![categories](Screenshots/categories.png) | ![login screen](Screenshots/login%20screen.png) |
 
 ---
 
