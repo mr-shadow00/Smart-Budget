@@ -41,8 +41,27 @@ A smart and intuitive budget management application designed to help you keep tr
 
 ---
 
-## 📦 Installation & Setup
+## 📦 Installation & Setup (ZimaOS)
 
-1. **Clone the repository:**
-   ```bash
-   git clone [https://github.com/mr-shadow00/Smart-Budget.git](https://github.com/mr-shadow00/Smart-Budget.git)
+1. Make folders and move the files there (you can change the app name if you want):
+   - `/DATA/AppData/smart-budget/app/`    ← `server/`, `public/`, `package.json`, `package-lock.json` go here
+   - `/DATA/AppData/smart-budget/data/`   ← leave empty
+
+2. Use the **My Budget compose.yaml** on App Store → **"Install a Customized App"** → **Docker Compose** tab[cite: 1].
+3. Wait for installation to complete.
+4. Open `http://<your-zimaos-ip>:8090`[cite: 1].
+5. Enjoy![cite: 1]
+
+*Shadow out*[cite: 1]
+
+---
+
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/mr-shadow00/Smart-Budget/issues).
+
+---
+
+## 📝 License
+
+This project is open-source and available under the [MIT License](LICENSE).
