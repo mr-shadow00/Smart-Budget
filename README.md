@@ -61,7 +61,3 @@ A smart and intuitive budget management application designed to help you keep tr
 Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/mr-shadow00/Smart-Budget/issues).
 
 ---
-
-## 📝 License
-
-This project is open-source and available under the [MIT License](LICENSE).
