@@ -104,24 +104,17 @@ a { color: var(--accent); }
 .screen-center.active { display: flex; }
 
 .brand-mark {
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  background: var(--accent);
-  color: var(--accent-text);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-mono);
-  font-weight: 700;
-  font-size: 28px;
+  width: 76px;
+  height: 76px;
+  border-radius: 22%;
+  display: block;
+  object-fit: contain;
   margin-bottom: 18px;
   box-shadow: 0 8px 24px rgba(217, 142, 74, 0.35);
 }
 .brand-mark.small {
-  width: 30px;
-  height: 30px;
-  font-size: 15px;
+  width: 34px;
+  height: 34px;
   margin-bottom: 0;
   box-shadow: none;
 }

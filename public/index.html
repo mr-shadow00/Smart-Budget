@@ -8,21 +8,19 @@
 <link rel="manifest" href="/manifest.json" />
 <link rel="icon" href="/icons/icon.svg" type="image/svg+xml" />
 <link rel="apple-touch-icon" href="/icons/icon-192.png" />
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/fonts.css" />
 <link rel="stylesheet" href="/css/style.css" />
 </head>
 <body>
 
 <!-- ===================== AUTH SCREENS ===================== -->
 <div id="screen-loading" class="screen screen-center active">
-  <div class="brand-mark">¢</div>
+  <img class="brand-mark" src="/icons/icon.svg" alt="" />
 </div>
 
 <div id="screen-setup" class="screen screen-center">
   <div class="auth-card">
-    <div class="brand-mark">¢</div>
+    <img class="brand-mark" src="/icons/icon.svg" alt="" />
     <h1 class="auth-title">Set up your PIN</h1>
     <p id="setup-step-label" class="auth-sub">Choose a 4-8 digit PIN to lock this budget.</p>
     <div class="pin-dots" id="setup-dots"></div>
@@ -33,7 +31,7 @@
 
 <div id="screen-login" class="screen screen-center">
   <div class="auth-card">
-    <div class="brand-mark">¢</div>
+    <img class="brand-mark" src="/icons/icon.svg" alt="" />
     <h1 class="auth-title" id="login-title">Welcome back</h1>
     <p class="auth-sub">Enter your PIN to unlock</p>
     <input type="password" id="login-pin-input" class="pin-text-input" inputmode="numeric" autocomplete="off" maxlength="8" placeholder="••••" autofocus />
@@ -49,7 +47,7 @@
     <!-- Sidebar / top bar -->
     <header class="topbar">
       <div class="topbar-brand">
-        <span class="brand-mark small">¢</span>
+        <img class="brand-mark small" src="/icons/icon.svg" alt="" />
         <span id="app-display-name" class="brand-name">My Budget</span>
       </div>
       <nav class="tabbar" id="tabbar">
